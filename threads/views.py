@@ -1,3 +1,14 @@
-from django.shortcuts import render
+from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView, ListCreateAPIView
 
-# Create your views here.
+from threads.models import ThreadModel
+from threads.serializers import ThreadSerializer
+
+
+class AllThreads(ListCreateAPIView):
+    queryset = ThreadModel.objects.all()
+    serializer_class = ThreadSerializer
+
+
+class RetrieveThreadUpdateDelete(RetrieveUpdateDestroyAPIView):
+    queryset = ThreadModel.objects.all()
+    serializer_class = ThreadSerializer
