@@ -11,7 +11,7 @@ class ThreadModel(models.Model):
     game = models.CharField(max_length=30)
     description = models.CharField(max_length=50)
     image = models.ImageField(upload_to='threads/')
-    author = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='threads')
 
 
 @receiver(models.signals.post_delete, sender=ThreadModel)

@@ -3,6 +3,9 @@ from .models import ThreadModel
 
 
 class ThreadSerializer(serializers.ModelSerializer):
+
+    author = serializers.ReadOnlyField(source='author.username')
+
     class Meta:
         model = ThreadModel
-        fields = ["title", "body", "description", "game", "author", "image"]
+        fields = ["id", "title", "body", "description", "game", "author", "image"]
