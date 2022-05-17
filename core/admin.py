@@ -1,3 +1,5 @@
 from django.contrib import admin
+from core.models import CommentsModel, LikesModel
 
-# Register your models here.
+admin.site.register(CommentsModel)
+admin.site.register(LikesModel)

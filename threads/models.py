@@ -9,6 +9,7 @@ class ThreadModel(models.Model):
     title = models.CharField(max_length=20)
     body = models.TextField(max_length=2000)
     game = models.CharField(max_length=30)
+    genre = models.CharField(max_length=10)
     description = models.CharField(max_length=50)
     image = models.ImageField(upload_to='threads/')
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='threads')

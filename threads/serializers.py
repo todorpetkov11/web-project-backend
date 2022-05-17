@@ -8,4 +8,4 @@ class ThreadSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ThreadModel
-        fields = ["id", "title", "body", "description", "game", "author", "image"]
+        fields = ["id", "title", "body", "description", "game", "author", "image", "genre"]
