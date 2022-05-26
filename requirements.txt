@@ -3,6 +3,7 @@ distlib==0.3.4
 Django==4.0.4
 django-cors-headers==3.11.0
 djangorestframework==3.13.1
+djangorestframework-simplejwt==5.2.0
 filelock==3.4.2
 Pillow==9.1.0
 platformdirs==2.4.1

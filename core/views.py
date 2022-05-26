@@ -1,7 +1,5 @@
-from django.shortcuts import render
-
-# Create your views here.
 from rest_framework.generics import ListCreateAPIView, ListAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 
 from core.models import CommentsModel, LikesModel
 from core.serializers import CommentsSerializer, LikesSerializer
@@ -19,6 +17,7 @@ class CommentsByThread(ListCreateAPIView):
 
 
 class CommentView(RetrieveUpdateDestroyAPIView):
+    permission_classes = [IsAuthenticated]
     queryset = CommentsModel.objects.all()
     serializer_class = CommentsSerializer
 
@@ -32,6 +31,7 @@ class CommentsByUser(ListAPIView):
 
 
 class LikesByThread(ListCreateAPIView):
+    permission_classes = [IsAuthenticatedOrReadOnly]
     serializer_class = LikesSerializer
 
     def perform_create(self, serializer):
@@ -53,5 +53,3 @@ class LikesByUser(ListAPIView):
     def get_queryset(self):
         user_id = self.kwargs['user_id']
         return LikesModel.objects.filter(id=user_id)
-
-
