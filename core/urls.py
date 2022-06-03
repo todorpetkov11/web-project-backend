@@ -1,6 +1,7 @@
 from django.urls import path
 
-from core.views import CommentsByThread, CommentsByUser, CommentView, LikeView, LikesByThread, LikesByUser
+from core.views import CommentsByThread, CommentsByUser, CommentView, LikeView, LikesByThread, LikesByUser, \
+    AsideListView, AsideDestroy
 
 urlpatterns = [
     path('comments/<int:pk>/', CommentView.as_view()),
@@ -9,4 +10,6 @@ urlpatterns = [
     path('likes/<int:pk>/', LikeView.as_view()),
     path('likes/thread/<int:thread_id>/', LikesByThread.as_view()),
     path('likes/user/<int:user_id>/', LikesByUser.as_view()),
+    path('aside/', AsideListView.as_view()),
+    path('aside/<int:pk>/', AsideDestroy.as_view())
 ]

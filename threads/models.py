@@ -1,8 +1,9 @@
 import os
 
-from django.contrib.auth.models import User
 from django.db import models
 from django.dispatch import receiver
+
+from users.models import CustomUserModel
 
 
 class ThreadModel(models.Model):
@@ -12,7 +13,7 @@ class ThreadModel(models.Model):
     genre = models.CharField(max_length=10)
     description = models.CharField(max_length=50)
     image = models.ImageField(upload_to='threads/')
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='threads')
+    author = models.ForeignKey(CustomUserModel, on_delete=models.CASCADE, related_name='threads')
 
 
 @receiver(models.signals.post_delete, sender=ThreadModel)

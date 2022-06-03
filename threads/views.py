@@ -1,7 +1,7 @@
 from django.db.models import Q
 from rest_framework import filters
 from rest_framework.generics import RetrieveUpdateDestroyAPIView, ListCreateAPIView, ListAPIView
-from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from threads.models import ThreadModel
 from threads.serializers import ThreadSerializer
 

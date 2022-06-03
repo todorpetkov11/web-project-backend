@@ -1,8 +1,8 @@
-from rest_framework.generics import ListCreateAPIView, ListAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListCreateAPIView, ListAPIView, RetrieveUpdateDestroyAPIView, DestroyAPIView
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 
-from core.models import CommentsModel, LikesModel
-from core.serializers import CommentsSerializer, LikesSerializer
+from core.models import CommentsModel, LikesModel, AsideModel
+from core.serializers import CommentsSerializer, LikesSerializer, AsideSerializer
 
 
 class CommentsByThread(ListCreateAPIView):
@@ -53,3 +53,14 @@ class LikesByUser(ListAPIView):
     def get_queryset(self):
         user_id = self.kwargs['user_id']
         return LikesModel.objects.filter(id=user_id)
+
+
+class AsideListView(ListCreateAPIView):
+    serializer_class = AsideSerializer
+    queryset = AsideModel.objects.all()
+    # permission_classes = [IsAuthenticatedOrReadOnly]
+
+
+class AsideDestroy(DestroyAPIView):
+    serializer_class = AsideSerializer
+    queryset = AsideModel.objects.all()

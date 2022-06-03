@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import CommentsModel, LikesModel
+from .models import CommentsModel, LikesModel, AsideModel
 
 
 class CommentsSerializer(serializers.ModelSerializer):
@@ -12,7 +12,12 @@ class CommentsSerializer(serializers.ModelSerializer):
 
 
 class LikesSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = LikesModel
         fields = ["id", "thread", "user"]
+
+
+class AsideSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AsideModel
+        fields = ["id", "type", "body"]
